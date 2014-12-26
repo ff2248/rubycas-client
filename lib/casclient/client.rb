@@ -234,6 +234,7 @@ module CASClient
       https = Net::HTTP::Proxy(proxy_host, proxy_port).new(uri.host, uri.port)
       https.use_ssl = (uri.scheme == 'https')
       https.verify_mode = (@force_ssl_verification ? OpenSSL::SSL::VERIFY_PEER : OpenSSL::SSL::VERIFY_NONE)
+      https.ssl_version = :TLSv1
       https
     end
 
